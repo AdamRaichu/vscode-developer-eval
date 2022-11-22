@@ -297,9 +297,7 @@ var _ConsoleError = console.error;
 var _ConsoleGroup = console.group;
 var _ConsoleDebug = console.debug;
 console.log = function () {
-  args = [];
-  args.push("[INFO] ");
-  args.push(" ");
+  var args = [];
   // Note: arguments is part of the prototype
   for (var i = 0; i < arguments.length; i++) {
     args.push(arguments[i]);
@@ -321,6 +319,7 @@ vscode.commands.registerCommand("AdamRaichu.devtools.evalInput", function () {
       try {
         eval(code);
       } catch (error) {
+        console.error(error);
         vscode.window.showErrorMessage(error.toString());
       }
     });
