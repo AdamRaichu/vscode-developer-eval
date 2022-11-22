@@ -304,8 +304,8 @@ console.log = function () {
   for (var i = 0; i < arguments.length; i++) {
     args.push(arguments[i]);
   }
-  _ConsoleLog.apply(console, args);
   o.appendLine(args.join(" "));
+  _ConsoleLog.apply(console, args);
 };
 
 vscode.commands.registerCommand("AdamRaichu.devtools.evalInput", function () {
