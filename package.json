@@ -1,23 +1,35 @@
 {
-  "name": "example-namespace",
-  "displayName": "User-visible name",
-  "description": "A short description of the extension",
+  "name": "devtools",
+  "displayName": "Developer Tools",
+  "description": "A set of tools for developers to use to quickly test code in web extensions.",
   "publisher": "adamraichu",
   "icon": "logo.png",
   "authors": "AdamRaichu",
   "author": {
     "name": "AdamRaichu"
   },
-  "categories": [],
+  "categories": [
+    "Testing"
+  ],
   "repository": {
-    "url": "https://github.com/AdamRaichu/vscode-webext-template"
+    "url": "https://github.com/AdamRaichu/vscode-devtools"
   },
   "version": "1.0.0",
   "browser": "/extension.js",
   "main": "/extension.js",
-  "activationEvents": [],
+  "activationEvents": [
+    "onCommand:AdamRaichu.devtools.eval"
+  ],
   "engines": {
-    "vscode": "^1.61.0"
+    "vscode": "^1.63.0"
   },
-  "contributes": {}
+  "contributes": {
+    "commands": [
+      {
+        "command": "AdamRaichu.devtools.eval",
+        "title": "Devtools: Evaluate a JavaScript Expression (eval) USE WITH CAUTION",
+        "shortTitle": "eval"
+      }
+    ]
+  }
 }
