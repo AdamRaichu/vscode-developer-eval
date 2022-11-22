@@ -290,20 +290,6 @@ var f = "Y-m-d H:i:s";
 vscode.window.showInformationMessage("Output channel created");
 o.appendLine(`${new Date().format(f)} Log created`);
 
-var c_log = console.log;
-function output(m) {
-  o.appendLine(`${new Date().format(f)} ${m}`);
-}
-console.log = function () {
-  var args = [];
-  args.push("[INFO]");
-  for (a in arguments) {
-    args.push(arguments[a]);
-  }
-  output(args.join(" "));
-  c_log.apply(console, args);
-};
-
 vscode.commands.registerCommand("AdamRaichu.devtools.evalInput", function () {
   vscode.window
     .showInputBox({
@@ -315,6 +301,19 @@ vscode.commands.registerCommand("AdamRaichu.devtools.evalInput", function () {
       console.log("Evaluating code...");
       console.log(code);
       try {
+        var c_log = console.log;
+        function output(m) {
+          o.appendLine(`${new Date().format(f)} ${m}`);
+        }
+        console.log = function () {
+          var args = [];
+          args.push("[INFO]");
+          for (a in arguments) {
+            args.push(arguments[a]);
+          }
+          output(args.join(" "));
+          c_log.apply(console, args);
+        };
         eval(code);
       } catch (error) {
         console.error(error);
