@@ -299,6 +299,7 @@ vscode.commands.registerCommand("AdamRaichu.devtools.evalInput", function () {
     .then(function (code) {
       // prettier-ignore
       o.appendLine(`${new Date().format(f)} Evaluating code. See browser console for more information.`);
+      o.appendLine(`${new Date().format(f)} ${code}`);
       console.log("Evaluating...");
       console.log(code);
       try {
