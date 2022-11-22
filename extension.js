@@ -287,7 +287,6 @@ const vscode = require("vscode");
 
 var o = vscode.window.createOutputChannel("Developer Tools");
 var f = "Y-m-d H:i:s";
-vscode.window.showInformationMessage("Output channel created");
 o.appendLine(`${new Date().format(f)} Log created`);
 
 vscode.commands.registerCommand("AdamRaichu.devtools.evalInput", function () {
@@ -298,22 +297,11 @@ vscode.commands.registerCommand("AdamRaichu.devtools.evalInput", function () {
       placeHolder: 'console.log("Hello world")',
     })
     .then(function (code) {
-      console.log("Evaluating code...");
+      // prettier-ignore
+      o.appendLine(`${new Date().format(f)} Evaluating code. See browser console for more information.`);
+      console.log("Evaluating...");
       console.log(code);
       try {
-        var c_log = console.log;
-        function output(m) {
-          o.appendLine(`${new Date().format(f)} ${m}`);
-        }
-        console.log = function () {
-          var args = [];
-          args.push("[INFO]");
-          for (a in arguments) {
-            args.push(arguments[a]);
-          }
-          output(args.join(" "));
-          c_log.apply(console, args);
-        };
         eval(code);
       } catch (error) {
         console.error(error);
