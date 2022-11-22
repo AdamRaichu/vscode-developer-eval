@@ -287,6 +287,7 @@ const vscode = require("vscode");
 
 var o = vscode.window.createOutputChannel("Developer Tools");
 var f = "Y-m-d H:i:s";
+vscode.window.showInformationMessage("Output channel created");
 o.appendLine(`${new Date().format(f)} Log created`);
 
 var _ConsoleLog = console.log;
