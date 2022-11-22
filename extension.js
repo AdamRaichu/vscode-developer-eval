@@ -298,7 +298,7 @@ var _ConsoleGroup = console.group;
 var _ConsoleDebug = console.debug;
 console.log = function () {
   args = [];
-  args.push("%c[INFO] ");
+  args.push("[INFO] ");
   args.push(" ");
   // Note: arguments is part of the prototype
   for (var i = 0; i < arguments.length; i++) {
