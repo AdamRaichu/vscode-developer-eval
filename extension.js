@@ -1,6 +1,6 @@
 const vscode = require("vscode");
 
-vscode.commands.registerCommand("AdamRaichu.devtools.eval", function () {
+vscode.commands.registerCommand("AdamRaichu.devtools.evalInput", function () {
   vscode.window
     .showInputBox({
       title: "Code to eval",
@@ -10,6 +10,10 @@ vscode.commands.registerCommand("AdamRaichu.devtools.eval", function () {
     .then(function (code) {
       console.log("Evaluating code...");
       console.log(code);
-      eval(code);
+      try {
+        eval(code);
+      } catch (error) {
+        vscode.window.showErrorMessage(error.toString());
+      }
     });
 });

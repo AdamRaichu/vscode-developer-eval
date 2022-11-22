@@ -1,7 +1,7 @@
 {
   "name": "devtools",
   "displayName": "Developer Tools",
-  "description": "A set of tools for developers to use to quickly test code in web extensions.",
+  "description": "A set of tools for developers to use to quickly test code for web extensions.",
   "publisher": "adamraichu",
   "icon": "logo.png",
   "authors": "AdamRaichu",
@@ -18,7 +18,7 @@
   "browser": "/extension.js",
   "main": "/extension.js",
   "activationEvents": [
-    "onCommand:AdamRaichu.devtools.eval"
+    "onCommand:AdamRaichu.devtools.evalInput"
   ],
   "engines": {
     "vscode": "^1.63.0"
@@ -26,9 +26,9 @@
   "contributes": {
     "commands": [
       {
-        "command": "AdamRaichu.devtools.eval",
-        "title": "Devtools: Evaluate a JavaScript Expression (eval) USE WITH CAUTION",
-        "shortTitle": "eval"
+        "command": "AdamRaichu.devtools.evalInput",
+        "title": "Developer Tools: Evaluate a JavaScript Expression from input (eval) USE WITH CAUTION",
+        "shortTitle": "eval input"
       }
     ]
   }
