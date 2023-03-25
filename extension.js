@@ -6,9 +6,7 @@ const vscode = require("vscode");
     return a;
   }
   function h(a, c) {
-    var b = "Sunday Monday Tuesday Wednesday Thursday Friday Saturday".split(
-      " "
-    );
+    var b = "Sunday Monday Tuesday Wednesday Thursday Friday Saturday".split(" ");
     return c ? b[a.getDay()].substr(0, 3) : b[a.getDay()];
   }
   function k(a, c) {
@@ -42,20 +40,15 @@ const vscode = require("vscode");
       if ("pretty" == a) {
         if (!1 === c) return this.format.pretty;
         b = {};
-        for (d in Date.prototype.format.pretty)
-          b[d] = this.format(Date.prototype.format.pretty[d]);
+        for (d in Date.prototype.format.pretty) b[d] = this.format(Date.prototype.format.pretty[d]);
         return b;
       }
-      if (Date.prototype.format.pretty[a])
-        return this.format(Date.prototype.format.pretty[a], c);
+      if (Date.prototype.format.pretty[a]) return this.format(Date.prototype.format.pretty[a], c);
       var b = a.split(""),
         e = "";
       for (d in b) {
         var f = b[d];
-        f &&
-          /[a-z]/i.test(f) &&
-          !/\\/.test(e + f) &&
-          (b[d] = l[f] ? l[f].apply(this) : f);
+        f && /[a-z]/i.test(f) && !/\\/.test(e + f) && (b[d] = l[f] ? l[f].apply(this) : f);
         e = b[d];
       }
       return b.join("").replace(/\\/g, "");
@@ -96,10 +89,7 @@ const vscode = require("vscode");
       },
       z: function () {
         return Math.round(
-          Math.abs(
-            (this.getTime() - new Date("1/1/" + this.getFullYear()).getTime()) /
-              864e5
-          )
+          Math.abs((this.getTime() - new Date("1/1/" + this.getFullYear()).getTime()) / 864e5)
         );
       },
       W: function () {
@@ -201,24 +191,16 @@ const vscode = require("vscode");
         return 2 < a.length ? a[2].substr(0, 3) + ":" + a[2].substr(3, 2) : "";
       },
       T: function () {
-        return this.toLocaleString("en", { timeZoneName: "short" })
-          .split(" ")
-          .pop();
+        return this.toLocaleString("en", { timeZoneName: "short" }).split(" ").pop();
       },
       Z: function () {
         return 60 * this.getTimezoneOffset();
       },
       c: function () {
-        return g(
-          new Date(this),
-          -(this.getTimezoneOffset() / 60)
-        ).toISOString();
+        return g(new Date(this), -(this.getTimezoneOffset() / 60)).toISOString();
       },
       r: function () {
-        return g(
-          new Date(this),
-          -(this.getTimezoneOffset() / 60)
-        ).toISOString();
+        return g(new Date(this), -(this.getTimezoneOffset() / 60)).toISOString();
       },
       U: function () {
         return (this.getTime() / 1e3) | 0;
@@ -271,15 +253,9 @@ const vscode = require("vscode");
       "pretty-g": "F jS, Y",
       "pretty-h": "F jS, Y g:mA",
     };
-  Object.defineProperty
-    ? Object.defineProperty(e, "compound", { value: m })
-    : (e.compound = m);
-  Object.defineProperty
-    ? Object.defineProperty(e, "constants", { value: n })
-    : (e.constants = n);
-  Object.defineProperty
-    ? Object.defineProperty(e, "pretty", { value: p })
-    : (e.pretty = p);
+  Object.defineProperty ? Object.defineProperty(e, "compound", { value: m }) : (e.compound = m);
+  Object.defineProperty ? Object.defineProperty(e, "constants", { value: n }) : (e.constants = n);
+  Object.defineProperty ? Object.defineProperty(e, "pretty", { value: p }) : (e.pretty = p);
   Object.defineProperty && !Date.prototype.hasOwnProperty("format")
     ? Object.defineProperty(Date.prototype, "format", { value: e })
     : (Date.prototype.format = e);
@@ -295,6 +271,7 @@ vscode.commands.registerCommand("AdamRaichu.devtools.evalInput", function () {
       title: "Code to eval",
       prompt: "USE WITH CAUTION",
       placeHolder: 'console.log("Hello world")',
+      ignoreFocusOut: true,
     })
     .then(function (code) {
       // prettier-ignore
